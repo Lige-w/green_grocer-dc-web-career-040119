@@ -8,14 +8,14 @@ def consolidate_cart(cart)
       if !consolodated.has_key?(product)
         consolodated[product] = data
       end
-      binding.pry
     end
   end
+  consolodated
 end
 
 def apply_coupons(cart, coupons)
   cart.map do |product, attributes|
-    binding.pry
+
   end
 end
 
