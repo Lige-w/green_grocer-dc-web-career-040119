@@ -46,4 +46,6 @@ end
 
 def checkout(cart, coupons)
   # code here
+  consolodate_cart(cart)
+  binding.pry
 end
