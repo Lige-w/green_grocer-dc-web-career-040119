@@ -17,7 +17,17 @@ def apply_coupons(cart, coupons)
   cart.map do |product, attributes|
     coupons.each do |coupon_data|
       binding.pry
-      if product == coupon_data[:name] && product[:count]
+      while product == coupon_data[:item] && cart[product][:count] >= coupon_data[:num]
+        if cart.has_key?("#{product} W/COUPON")
+          cart["#{product} W/COUPON"][:count] += coupon_data[:num]
+        else
+          cart["#{product} W/COUPON"] = {
+            :price => coupon_data[:cost],
+            :clearance => cart[product][:clearance],
+            :count => coupon_data[:num]
+          }
+        end
+        cart[product][:count] -= coupon_data[:num]
       end
     end
   end
