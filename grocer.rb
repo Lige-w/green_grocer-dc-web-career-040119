@@ -15,7 +15,11 @@ end
 
 def apply_coupons(cart, coupons)
   cart.map do |product, attributes|
-    binding.pry
+    coupons.each do |coupon_data|
+      binding.pry
+      if product == coupon_data[:name] && product[:count]
+      end
+    end
   end
 end
 
