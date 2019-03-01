@@ -1,17 +1,16 @@
 require 'pry'
 def consolidate_cart(cart)
   # code here
-  consolodated = {}
+  consolidated = {}
   cart.each do |item|
     item.map do |product, data|
       item[product][:count] = cart.count(item)
-      if !consolodated.has_key?(product)
-        consolodated[product] = data
+      if !consolidated.has_key?(product)
+        consolidated[product] = data
       end
     end
   end
-  consolodated
-  binding.pry
+  consolidated
 end
 
 def apply_coupons(cart, coupons)
@@ -46,7 +45,5 @@ def apply_clearance(cart)
 end
 
 def checkout(cart, coupons)
-  # code here
   consolidate_cart(cart)
-  binding.pry
 end
