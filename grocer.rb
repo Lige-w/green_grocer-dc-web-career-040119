@@ -39,9 +39,9 @@ def apply_clearance(cart)
     if cart[product][:clearance]
       cart[product][:price] *= 0.8
       cart[product][:price] = cart[product][:price].round(2)
-      binding.pry
     end
   end
+  binding.pry
 end
 
 def checkout(cart, coupons)
