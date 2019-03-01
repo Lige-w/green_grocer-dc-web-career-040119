@@ -17,7 +17,6 @@ def apply_coupons(cart, coupons)
   cart_with_coupons = cart
   cart.each do |product, attributes|
     coupons.each do |coupon_data|
-      binding.pry
       while product == coupon_data[:item] && cart_with_coupons[product][:count] >= coupon_data[:num]
         if cart_with_coupons.has_key?("#{product} W/COUPON")
           cart_with_coupons["#{product} W/COUPON"][:count] += coupon_data[:num]
