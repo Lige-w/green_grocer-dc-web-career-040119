@@ -14,7 +14,7 @@ def consolidate_cart(cart)
 end
 
 def apply_coupons(cart, coupons)
-  cart_with_coupons = cart
+  cart_with_coupons = {}
   cart.each do |product, attributes|
     coupons.each do |coupon_data|
       while product == coupon_data[:item] && cart_with_coupons[product][:count] >= coupon_data[:num]
