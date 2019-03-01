@@ -14,14 +14,15 @@ def consolidate_cart(cart)
 end
 
 def apply_coupons(cart, coupons)
-  cart.map do |product, attributes|
+  cart_with_coupons = cart
+  cart.each do |product, attributes|
     coupons.each do |coupon_data|
       binding.pry
-      while product == coupon_data[:item] && cart[product][:count] >= coupon_data[:num]
-        if cart.has_key?("#{product} W/COUPON")
-          cart["#{product} W/COUPON"][:count] += coupon_data[:num]
+      while product == coupon_data[:item] && cart_with_coupons[product][:count] >= coupon_data[:num]
+        if cart_with_coupons.has_key?("#{product} W/COUPON")
+          cart_with_coupons["#{product} W/COUPON"][:count] += coupon_data[:num]
         else
-          cart["#{product} W/COUPON"] = {
+          cart_with_coupons["#{product} W/COUPON"] = {
             :price => coupon_data[:cost],
             :clearance => cart[product][:clearance],
             :count => coupon_data[:num]
@@ -31,6 +32,7 @@ def apply_coupons(cart, coupons)
       end
     end
   end
+  cart_with_coupons
 end
 
 def apply_clearance(cart)
