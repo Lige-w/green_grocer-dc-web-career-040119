@@ -35,7 +35,7 @@ def apply_coupons(cart, coupons)
 end
 
 def apply_clearance(cart)
-  cart.map do |product, attributes|
+  cart.each do |product, attributes|
     if cart[product][:clearance]
       cart[product][:price] *= 0.8
       cart[product][:price] = cart[product][:price].round(2)
@@ -46,4 +46,5 @@ end
 
 def checkout(cart, coupons)
   consolidate_cart(cart)
+  
 end
